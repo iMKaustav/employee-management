@@ -54,6 +54,17 @@
       "team": "OCBC Singapore",
       "location": "Bangalore",
       "avatarUrl": "assets/img/avatar1.png"
+    },
+    {
+      "id": "4b1e",
+      "name": "Anurag Singh",
+      "companyName": "Infrrd",
+      "email": "ang.ad@xyz.com",
+      "contactNo": "8919190000",
+      "designation": "Technical Lead",
+      "team": "XYZ Bangalore",
+      "location": "Berlin",
+      "avatarUrl": "assets/img/avatar1.png"
     }
   ]
 }

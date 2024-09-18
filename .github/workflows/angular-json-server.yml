@@ -1,0 +1,39 @@
+name: Angular Build with JSON Server
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Step 2: Set up Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.10.0'  # Ensure you're using the correct Node.js version for your project
+
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Step 4: Run JSON Server
+    - name: Start JSON Server
+      run: |
+        nohup npm run start:api & # Starts JSON Server in the background
+
+    # Step 5: Build Angular app
+    - name: Build Angular
+      run: npm run build
+
+    # Step 6: Run tests (if needed)
+    - name: Run tests
+      run: npm run test -- --watch=false
