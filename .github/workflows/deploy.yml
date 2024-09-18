@@ -1,0 +1,41 @@
+name: Deploy Angular App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # Trigger deployment on push to the 'main' branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.10'  # Use a Node.js version compatible with your Angular app
+
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Step 4: Run JSON Server
+    - name: Start JSON Server
+      run: |
+        nohup npm run start:api & # Starts JSON Server in the background
+
+    # Step 5: Build the Angular app
+    - name: Build Angular app
+      run: npm run build -- --prod  # The '--prod' flag ensures a production build
+
+    # Step 6: Deploy to GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages  # Branch to deploy to (gh-pages is the default branch for GitHub Pages)
+        folder: dist/employee-management  # Replace with the actual folder name inside 'dist'
