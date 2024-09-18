@@ -1,0 +1,184 @@
+<mat-toolbar color="primary" class="top-nav">
+  <div class="left-side-elements">
+    <img src="assets/img/Infrrd-Logo-Transparent.png" alt="header-icon">
+  </div>
+  <div class="right-side-elements">
+    <button
+      class="text-button"
+      (click)="openAddEditEmployeeDialog()">
+      Register New Employee
+    </button>
+    <button
+      class="notification"
+      mat-icon-button
+      aria-label="Notifications">
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <mat-form-field class="filter-team">
+      <mat-label>Choose Team</mat-label>
+      <mat-select [(ngModel)]="filters.team" (selectionChange)="loadEmployees()">
+        <mat-option *ngFor="let item of teams" [value]="item">{{ item }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-toolbar>
+<mat-divider></mat-divider>
+<mat-sidenav-container class="sidenav-container" autosize>
+  <mat-sidenav #sidenav class="side-nav" mode="side" opened>
+    <div class="top-menu-items">
+      <mat-list>
+        <div class="side-nav__menu" mat-list-item (click)="loadEmployees()">
+          <mat-icon mat-list-icon>dns</mat-icon>
+          <span *ngIf="isExpanded" class="side-nav__label" matLine>Overview</span>
+        </div>
+      </mat-list>
+      <mat-list>
+        <div class="side-nav__menu" mat-list-item>
+          <mat-icon mat-list-icon>mail_outline</mat-icon>
+          <span *ngIf="isExpanded" class="side-nav__label" matLine>Messages</span>
+        </div>
+      </mat-list>
+      <mat-list>
+        <div class="side-nav__menu" mat-list-item (click)="toggleSearchBox()">
+          <mat-icon mat-list-icon>search</mat-icon>
+          <span *ngIf="isExpanded" class="side-nav__label" matLine>Search</span>
+        </div>
+      </mat-list>
+      <mat-list>
+        <div class="side-nav__menu" mat-list-item (click)="toggleFilterBox()">
+          <mat-icon mat-list-icon>equalizer</mat-icon>
+          <span *ngIf="isExpanded" class="side-nav__label" matLine>Filter</span>
+        </div>
+      </mat-list>
+    </div>
+    <div class="bottom-menu-items">
+      <mat-list>
+        <div class="side-nav__menu" mat-list-item>
+          <mat-icon mat-list-icon>forum</mat-icon>
+          <span *ngIf="isExpanded" class="side-nav__label" matLine>Get help</span>
+        </div>
+      </mat-list>
+      <mat-list>
+        <div class="side-nav__menu" mat-list-item>
+          <mat-icon mat-list-icon>logout</mat-icon>
+          <span *ngIf="isExpanded" class="side-nav__label" matLine>Sign Out</span>
+        </div>
+      </mat-list>
+    </div>
+    <div class="toggle-menu-icon" (click)="toggleMenu()">
+      <mat-icon *ngIf="!isExpanded">chevron_right</mat-icon>
+      <mat-icon *ngIf="isExpanded">chevron_left</mat-icon>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="employee-list__container">
+    <div *ngIf="isFilterEnabled" class="employee-list__filter-container">
+      <mat-form-field class="filter-field">
+        <mat-label>Designation</mat-label>
+        <mat-select [(ngModel)]="filters.designation" disableRipple>
+          <mat-option *ngFor="let item of designations" [value]="item">{{ item }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="filter-field">
+        <mat-label>Location</mat-label>
+        <mat-select [(ngModel)]="filters.location" disableRipple>
+          <mat-option *ngFor="let item of locations" [value]="item">{{ item }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="filter-field">
+        <mat-label>Team</mat-label>
+        <mat-select [(ngModel)]="filters.team" disableRipple>
+          <mat-option *ngFor="let item of teams" [value]="item">{{ item }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="filter-buttons">
+        <button class="text-button text-button-clear" (click)="clearFilter()">
+          Clear
+        </button>
+        <button class="text-button" (click)="loadEmployees()">
+          Submit
+        </button>
+      </div>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="employee-list__body">
+      <div *ngIf="isSearchEnabled" class="search-bar">
+        <input type="text" class="searchBarInput" [(ngModel)]="searchText" placeholder="Search by name or email" />
+        <span *ngIf="searchText" class="clear-icon" (click)="clearSearch()">
+          <mat-icon>close</mat-icon>
+        </span>
+        <button class="text-button text-button-clear" (click)="onSearch()">Search</button>
+      </div>
+      <div class="employee-list__header">
+        <div class="list-length">
+          {{ employees.length }} Results Found
+        </div>
+        <div class="location-filter">
+          <section class="example-section">
+            <mat-checkbox (change)="onCheckboxChange($event)">
+              Show only Bangalore Employees
+            </mat-checkbox>
+          </section>
+        </div>
+      </div>
+      <div class="employee-list__content">
+        <mat-card *ngFor="let employee of employees" class="employee-card" appearance="outlined">
+          <div class="employee-card__header">
+            <div class="avatar">
+              <img [src]="employee.avatarUrl" alt="Avatar" />
+            </div>
+            <div class="details">
+              <div class="name">{{ employee.name }}</div>
+              <div class="text-diabled">{{ employee.designation }}</div>
+            </div>
+            <div class="actions">
+              <div class="edit">
+                <mat-icon (click)="openEditForm(employee)">edit</mat-icon>
+              </div>
+              <div class="share">
+                <mat-icon (click)="confirmDeleteEmployee(employee.id)">delete</mat-icon>
+              </div>
+            </div>
+          </div>
+          <div class="employee-card__rating">
+          </div>
+          <mat-divider></mat-divider>
+          <div class="employee-card__body">
+            <div class="employee-card__body-content">
+              <div class="label text-diabled">Experience:</div>
+              <div class="value">5.8 Years</div>
+            </div>
+            <div class="employee-card__body-content">
+              <div class="label text-diabled">Date of Joining:</div>
+              <div class="value">2017</div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="employee-card__body">
+            <div class="employee-card__body-content">
+              <div class="label text-diabled">Current Team:</div>
+              <div class="value">{{ employee.team }}</div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="employee-card__body">
+            <div class="employee-card__body-content">
+              <div class="label text-diabled">Reporting Manager:</div>
+              <div class="value">Lalit Agarwal</div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="employee-card__body footer">
+            <div class="employee-card__body-content">
+              <mat-icon class="phone">phone</mat-icon>
+              <div class="value">{{ employee.contactNo }}</div>
+            </div>
+            <div class="employee-card__body-content email-address">
+              <mat-icon class="mail">mail</mat-icon>
+              <div class="value">{{ employee.email }}</div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,59 @@
+{
+  "employees": [
+    {
+      "id": "a95d",
+      "name": "Kaustav Das",
+      "companyName": "Here Technologies",
+      "email": "16soumo@gmail.com",
+      "contactNo": "9898981919",
+      "designation": "Senior Software Developer",
+      "team": "XYZ Bangalore",
+      "location": "Bangalore",
+      "avatarUrl": "assets/img/avatar1.png"
+    },
+    {
+      "id": "3664",
+      "name": "Abhinav Panday",
+      "companyName": "Here Technologies",
+      "email": "abhi@xyz.com",
+      "contactNo": "9898981919",
+      "designation": "Quality Assurance",
+      "team": "OCBC Singapore",
+      "location": "Singapore",
+      "avatarUrl": "assets/img/avatar1.png"
+    },
+    {
+      "id": "c741",
+      "name": "Suchi Panda",
+      "companyName": "Xylem Inc",
+      "email": "suhci@xy.com",
+      "contactNo": "9898981919",
+      "designation": "Technical Lead",
+      "team": "Mumbai ABC",
+      "location": "Bangalore",
+      "avatarUrl": "assets/img/avatar3.jpg"
+    },
+    {
+      "id": "f976",
+      "name": "Tarun Das",
+      "companyName": "Capgemini",
+      "email": "hello@anc.com",
+      "contactNo": "9898981919",
+      "designation": "Quality Assurance",
+      "team": "OCBC Singapore",
+      "location": "Bangalore",
+      "avatarUrl": "assets/img/avatar1.png"
+    },
+    {
+      "id": "282e",
+      "name": "Sachin Sindhe",
+      "companyName": "ABC Corp",
+      "email": "he@here.com",
+      "contactNo": "9898981919",
+      "designation": "Manager",
+      "team": "OCBC Singapore",
+      "location": "Bangalore",
+      "avatarUrl": "assets/img/avatar1.png"
+    }
+  ]
+}

@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.text-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #23c483;
+  border-radius: 5px;
+  border: 1px solid #23c483;
+  cursor: pointer;
+  outline: none;
+}
+
+.text-button-error {
+  color: #fff;
+  background-color: red;
+  border-color: red;
+}
+
+.text-button-clear {
+  background-color: #fff;
+  color: #23c483;
+}
+
+.text-button-error-clear {
+  background-color: #fff;
+  color: red;
+  border-color: red;
+}
+
+.text-button:hover {
+  background-color: #fff;
+  color: #23c483;
+}
+
+.text-button-clear:hover {
+  color: #fff;
+  background-color: #23c483;
+}
+
+.text-button-error:hover {
+  background-color: #fff;
+  color: red;
+}
+
+.text-button-error-clear:hover {
+  color: #fff;
+  background-color: red;
+}

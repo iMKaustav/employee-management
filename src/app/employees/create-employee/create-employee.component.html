@@ -1,0 +1,133 @@
+<div class="employee-form">
+  <div class="form-header">
+    <h2>Register New Employee</h2>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="form-content">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <div class="form-field">
+        <label class="form-field__label" for="username">
+          <span>Name</span>
+          <span class="danger"> *</span>
+        </label>
+        <div class="form-field__value">
+          <input id="username" class="form-field__input" formControlName="name" />
+          <div *ngIf="name.invalid && name.touched" class="danger">
+            Name is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="companyName">
+          <span>Company Name</span>
+          <span class="danger"> *</span>
+        </label>
+        <div class="form-field__value">
+          <input id="companyName" class="form-field__input" formControlName="companyName" />
+          <div *ngIf="companyName.invalid && companyName.touched" class="danger">
+            Company Name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="emailId">
+          <span>Email ID</span>
+          <span class="danger"> *</span>
+        </label>
+        <div class="form-field__value">
+          <input id="emailId" class="form-field__input" formControlName="email" />
+          <div *ngIf="email.invalid && email.touched" class="danger">
+            <div *ngIf="email.errors?.required">Email ID is required</div>
+            <div *ngIf="email.errors?.email">Invalid email format</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="contactNo">
+          <span>Contact No</span>
+          <span class="danger"> *</span>
+        </label>
+        <div class="form-field__value">
+          <input id="contactNo" class="form-field__input" formControlName="contactNo" />
+          <div *ngIf="contactNo.invalid && contactNo.touched" class="danger">
+            <div *ngIf="contactNo.errors?.required">Contact No. is required</div>
+            <div *ngIf="contactNo.errors?.pattern">Invalid contact number format</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="designation">
+          <span>Designation</span>
+          <span class="danger"> *</span>
+        </label>
+        <div class="form-field__value">
+          <select id="designation" class="form-field__option" formControlName="designation">
+            <option value="" disabled>Select Designation</option>
+            <option *ngFor="let item of designations" [value]="item">{{item}}</option>
+          </select>
+          <div *ngIf="designation.invalid && designation.touched" class="danger">
+            Designation is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="team">
+          <span>Team</span>
+          <span class="danger"> *</span>
+        </label>
+        <div class="form-field__value">
+          <select id="team" class="form-field__option" formControlName="team">
+            <option value="" disabled>Select Team</option>
+            <option *ngFor="let item of teams" [value]="item">{{item}}</option>
+          </select>
+          <div *ngIf="team.invalid && team.touched" class="danger">
+            Team is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="location">
+          <span>Location</span>
+          <span class="danger"> *</span>
+        </label>
+        <div class="form-field__value">
+          <select id="location" class="form-field__option" formControlName="location">
+            <option value="" disabled>Select Location</option>
+            <option *ngFor="let item of locations" [value]="item">{{item}}</option>
+          </select>
+          <div *ngIf="location.invalid && location.touched" class="danger">
+            Location is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field form-field-avatar">
+        <label class="form-field__label">
+          <span>Choose an Avatar</span>
+          <span class="danger"> *</span>
+        </label>
+        <label *ngFor="let avatarUrl of avatars">
+          <input
+            type="radio"
+            name="avatar"
+            [value]="avatarUrl"
+            formControlName="avatarUrl"
+          />
+          <div class="radio-option">
+            <img [src]="avatarUrl" class="avatar-img" />
+          </div>
+        </label>
+      </div>
+
+      <div class="form-field form-field__button">
+        <button type="submit" class="text-button" [disabled]="employeeForm.invalid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+.employee-form {
+  .form-header {
+    margin: 30px;
+  }
+
+  .form-content {
+    margin: 30px;
+
+    .form-field {
+      margin-top: 20px;
+
+      &__label {
+        display: inline-block;
+        min-width: 150px;
+      }
+
+      &__value {
+        display: inline-grid;
+      }
+
+      &__input {
+        min-width: 250px;
+        height: 30px;
+      }
+
+      &__option {
+        min-width: 260px;
+        height: 40px;
+      }
+
+      &__button {
+        width: 100%;
+        text-align: center;
+      }
+
+      .danger {
+        color: red;
+      }
+
+      .avatar-img {
+        height: 40px;
+      }
+    }
+
+    .form-field-avatar {
+      display: flex;
+
+      label {
+        display: flex;
+      }
+    }
+  }
+}

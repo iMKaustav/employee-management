@@ -1,0 +1,218 @@
+.top-nav {
+  width: -webkit-fill-available;
+  background: none;
+
+  .left-side-elements img {
+    margin-top: 10px;
+    height: 60px;
+  }
+
+  .right-side-elements {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+
+    .notification {
+      background: none;
+      border: none;
+    }
+
+    .filter-team {
+      margin-top: 20px;
+    }
+  }
+}
+
+.sidenav-container {
+  width: 100%;
+  height: calc(100% - 68px);
+
+  .side-nav {
+    color: #23c483;
+
+    ::ng-deep .mat-drawer-inner-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &__menu {
+      padding: 10px 20px;
+      display: flex;
+      gap: 16px;
+      cursor: pointer;
+    }
+
+    &__label {
+      line-height: 25px
+    }
+  }
+
+  .employee-list__container {
+    display: flex;
+    flex-direction: row;
+
+    .employee-list__filter-container {
+      min-width: 400px;
+      display: flex;
+      flex-direction: column;
+
+      .filter-field {
+        width: 100%;
+      }
+
+      .filter-buttons {
+        margin: auto 0 20px;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      ::ng-deep {
+        .mat-mdc-text-field-wrapper {
+          padding: 5px 20px;
+        }
+      }
+    }
+
+    .employee-list__body {
+      overflow: scroll;
+
+      .search-bar {
+        display: flex;
+        gap: 20px;
+        margin: 20px;
+        position: relative;
+      }
+
+      .searchBarInput {
+        background: transparent;
+        padding: 12px 24px;
+        border-radius: 8px;
+        border: 1px solid #23c483;
+        width: 400px;
+      }
+
+      .clear-icon {
+        position: absolute;
+        top: 50%;
+        right: 120px;
+        transform: translateY(-45%);
+        cursor: pointer;
+        color: #999;
+      }
+    }
+
+    .employee-list__header {
+      margin: 20px 20px 0;
+      display: flex;
+      justify-content: space-between;
+
+      .list-length {
+        margin-top: 12px
+      }
+    }
+
+    .employee-list__content {
+      display: flex;
+      gap: 25px;
+      margin: 20px;
+      flex-wrap: wrap;
+      overflow: scroll;
+
+      .employee-card {
+        max-width: 400px;
+        height: fit-content;
+
+        &__header {
+          padding: 16px;
+          display: flex;
+          justify-content: space-between;
+          gap: 16px;
+
+          .avatar img {
+            width: 80px;
+            border-radius: 50%;
+          }
+
+          .details {
+            padding: 10px;
+            gap: 16px;
+
+            .name {
+              font-weight: bold;
+              margin-bottom: 15px;
+            }
+          }
+
+          .actions{
+            mat-icon {
+              cursor: pointer;
+              border-radius: 50%;
+              color: grey;
+              padding: 5px;
+              transform: scale(0.7);
+              box-shadow: 0px -2px 20px 2px rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
+
+        &__body {
+          padding: 16px;
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+
+          &-content {
+            display: flex;
+            gap: 10px;
+
+            mat-icon {
+              border-radius: 50%;
+              padding: 5px;
+              transform: scale(0.7);
+              box-shadow: 0px -2px 20px 2px rgba(0, 0, 0, 0.2);
+            }
+
+            .phone {
+              color: blue;
+            }
+
+            .mail {
+              color: red;
+            }
+          }
+
+          .email-address {
+            min-width: 200px;
+            justify-content: flex-end;
+          }
+        }
+
+        .footer {
+          padding: 8px 16px;
+
+          .value {
+            line-height: 34px;
+          }
+        }
+
+        .text-diabled {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+.toggle-menu-icon {
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  cursor: pointer;
+
+  mat-icon {
+    border: 1px solid;
+  }
+}
