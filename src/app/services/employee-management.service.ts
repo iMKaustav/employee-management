@@ -9,7 +9,7 @@ import { EmployeeFilter } from '../models/employee-filter';
   providedIn: 'root'
 })
 export class EmployeeManagementService {
-  private apiUrl = 'http://localhost:3000/employees';
+  private apiUrl = 'https://imkaustav.github.io/employees_api/employees.json';
 
   constructor(private http: HttpClient) { }
 
