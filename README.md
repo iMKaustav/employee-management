@@ -1,14 +1,14 @@
 # EmployeeManagement
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11. This is a simple application of create, edit, delete employees. There are also some filter, search functionalities in the dashboard. This application has been designed following resposive way, so its compatible with any mobile, tablet and desktop devices.
+
+## Demo
+
+The project is deployed to GitHub Action, which is available at : https://imkaustav.github.io/employee-management/
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
