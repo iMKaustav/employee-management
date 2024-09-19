@@ -9,7 +9,7 @@ import { EmployeeFilter } from '../models/employee-filter';
   providedIn: 'root'
 })
 export class EmployeeManagementService {
-  private apiUrl = 'https://imkaustav.github.io/employees_api/employees.json';
+  private apiUrl = 'https://infrrd-employee-management-721bd7b0b18e.herokuapp.com/employees';
 
   constructor(private http: HttpClient) { }
 

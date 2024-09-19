@@ -78,6 +78,7 @@
 
     .employee-list__body {
       overflow: scroll;
+      flex-grow: 1;
 
       .search-bar {
         display: flex;
